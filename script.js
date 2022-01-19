@@ -7,6 +7,8 @@ snake[0] = {
     y: 8 *box
 } //array tamanho da cobrinha..
 
+let direction = "right"; //variavel direção da cobrinha...
+
 function criarBG(){
     context.fillStyle = "lightblue"; //background
     context.fillRect(0, 0, 16*box, 16*box); //desenha o retângulo usando x e y e a largura e altura setadas
@@ -19,5 +21,26 @@ function criarCobrinha() {
     }
 } //incrementa o corpo da cobrinha...
 
-criarBG();
-criarCobrinha();
+function iniciarjogo() {
+    criarBG(); //função background
+    criarCobrinha(); //função cobrinha(corpo)
+    
+    //ponto de partida
+    let snakex = snake[0].x; //posição 0 do eixo x
+    let snakey = snake[0].y; //posição 0 do eixo y
+
+    //variação de posição
+    if(direction == "right") snakex += box; //acresentando valor da box para mover "right" quadradinho
+    if(direction == "left") snakex -= box; //remove valor da box "left" para avanção o quadradinho
+    if(direction == "up") snakey -= box;
+    if(direction == "down") snakey += box;
+
+    snake.pop(); //retira o ultimo elemento do array
+
+    let newHead = {
+        x: snakex,
+        Y: snakey
+    } //acresenta um elemento a frente
+} // Iniciar jogo
+
+let jogo = setIntervalo(iniciarjogo, 100); //Intervalo de tempo(em ms) atualizando dados...
