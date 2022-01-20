@@ -77,7 +77,7 @@ function iniciarJogo() {
 
     let newHead = {
         x: snakeX,
-        Y: snakeY
+        y: snakeY
     } //acresenta um elemento a frente
 
     snake.unshift(newHead);  //método unshift adiciona um quadradinho na frente da cobrinha 
